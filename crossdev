@@ -959,6 +959,9 @@ set_links() {
 		fi
 	done
 	ln -s "${srcdir}"/${cat}/${pkg} "${d}"
+        for p in "${d}"/*.ebuild ; do
+		ebuild "${p}" manifest 2>/dev/null
+        done
 }
 set_env() {
 	local l=$1 pkg=$2 env=$3 output
